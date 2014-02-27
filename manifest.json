@@ -1,0 +1,28 @@
+{
+  "manifest_version": 2,
+
+  "name": "Miss-Alt-Chrome",
+  "description": "This extension allows people with disabilities and their advocates to report missing alternative text on any image to Miss-Alt, so that website owners can discover and prioritize improving the image descriptions.",
+  "version": "1.0",
+
+  "background": { "scripts": ["background.js"] },
+  "content_scripts": [
+    { "matches": ["http://*/*", "https://*/*"], 
+      "js": ["jquery-1.11.0.min.js", "jquery-migrate-1.2.1.min.js", "content_script.js"] }
+  ],
+
+  "permissions": [
+      "tabs",
+      "storage"
+    ],
+
+  "browser_action": {
+    "default_title": "Miss-Alt-Chrome",
+    "default_icon": "icon-3.png",
+    "default_popup": "popup.html"
+  },
+  
+  "options_page": "options.html",
+  
+  "content_security_policy": "default-src 'none'; style-src 'self'; script-src 'self'; connect-src *"
+}

@@ -1,0 +1,35 @@
+<!doctype html>
+<html>
+  <head>
+    <title>Miss-Alt-Chrome Extension Options</title>
+    <link href="options.css" rel="stylesheet" type="text/css">
+  </head>
+  <body>
+    <div class="page">
+      <h1>Miss-Alt-Chrome Extension Options</h1>
+
+      <h2>Your Disabilities and Impairments</h2>
+      <input type="checkbox" name="disabilities[]" value="Vision Loss and Blindness" />Vision Loss and Blindness<br />
+      <input type="checkbox" name="disabilities[]" value="Autism" />Autism<br />
+      <input type="checkbox" name="disabilities[]" value="Chronic Illness" />Chronic Illness<br />
+      <input type="checkbox" name="disabilities[]" value="Hearing Loss and Deafness" />Hearing Loss and Deafness<br />
+      <input type="checkbox" name="disabilities[]" value="Intellectual Disability" />Intellectual Disability<br />
+      <input type="checkbox" name="disabilities[]" value="Learning Disability" />Learning Disability<br />
+      <input type="checkbox" name="disabilities[]" value="Memory Loss" />Memory Loss<br />
+      <input type="checkbox" name="disabilities[]" value="Mental Illness" />Mental Illness<br />
+      <input type="checkbox" name="disabilities[]" value="Physical Disability" />Physical Disability<br />
+      <input type="checkbox" name="disabilities[]" value="Speech and Language Disorders" />Speech and Language Disorders<br />
+
+      <br>
+      
+      <h2>Your Organizations</h2>
+      <textarea name="organizations" rows="6" cols="50" placeholder="Enter your colleges, corporations, government agencies, etc. (one organization per line)"></textarea>
+      
+      <div id="status"></div>
+      <button id="save">Save</button>
+    </div>
+  </body>
+  <script src="jquery-1.11.0.min.js"></script>
+  <script src="jquery-migrate-1.2.1.min.js"></script>
+  <script src="options.js"></script>
+</html>

@@ -1,0 +1,32 @@
+body {
+    font-size: 1.2em;
+}
+
+input, button, textarea {
+    font-size: 1.1em;
+}
+
+.page { 
+    width: 600px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+h1 {color:red}
+
+::-webkit-input-placeholder {
+   color: red;
+}
+
+:-moz-placeholder { /* Firefox 18- */
+   color: red;  
+}
+
+::-moz-placeholder {  /* Firefox 19+ */
+   color: red;  
+}
+
+:-ms-input-placeholder {  
+   color: red;  
+}
