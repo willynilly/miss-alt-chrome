@@ -6,6 +6,10 @@ input, button, textarea {
     font-size: 1.1em;
 }
 
+input.api-key {
+    width: 15em;
+}
+
 .page { 
     width: 600px;
     display: block;

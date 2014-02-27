@@ -1,22 +1,87 @@
+function getChromeStorage(key) {
+    var dfrd = $.Deferred();
+    chrome.storage.sync.get(key, function(result) {
+        console.log(key);
+        console.log(result);
+        console.log(result[key]);
+        dfrd.resolve(result[key]);
+    });
+    return dfrd.promise();
+}
+
+// function setChromeStorage(key, value) {
+//     var dfrd = $.Deferred();
+//     chrome.storage.sync.set({key:value}, function(result) {
+//         dfrd.resolve(result[key]);
+//     });
+//     return dfrd.promise();
+// }
+
+function getIssues(badImages) {
+    var dfrd = $.Deferred();
+    var issues = []
+    getChromeStorage('api_key').done(function(apiKey) {
+        console.log("get_issues apikey:" + apiKey);
+        
+        if (!apiKey) {
+          return;
+        }
+        for(i = 0; i < badImages.length; i++) {
+            badImage = badImages[i];
+            badImage['creator'] = apiKey;
+            issues.push(badImage);
+        }
+        console.log(issues);
+        dfrd.resolve(issues);
+    });    
+    return dfrd.promise();
+}
+
+function reportIssue(issue) {
+    var dfrd = $.Deferred();
+    console.log(issue);
+    $.ajax({
+        url:"http://127.0.0.1:5000/report", 
+        type: "POST",
+        data: JSON.stringify(issue),
+        contentType: "application/json; charset=utf-8",
+        dataType: 'json',
+        success: function(d) {console.log(d)},
+        failure: function(err) {console.log(err)} 
+    }).done(function() {
+        dfrd.resolve();
+    });
+    return dfrd.promise();
+}
+
+function reportIssues(issues) {
+    var dfrd = $.Deferred();
+    var promises = [];
+    for (var i=0;i<issues.length;i++) {
+        //$('body').append('<p>' + JSON.stringify(data[i]) + '</p>');
+        issue = issues[i]
+        promises.push(reportIssue(issue))
+    }
+    if (promises.length) {
+        $.when(promises, function() {
+            dfrd.resolve();
+        });
+    } else {
+        dfrd.resolve();
+    }
+    return dfrd.promise();
+}
+
 chrome.tabs.query({active: true, currentWindow: true}, function(tabs) {
   chrome.tabs.sendMessage(tabs[0].id, {}, function(response) {
     //console.log(JSON.stringify(response.bad_alt_images));
     $('body').append('<p>Bad Alt Text Image Count: ' + response.bad_alt_images.length + '</p>');
-    var data = response.bad_alt_images;
-    //console.log(JSON.stringify(data));
-    for (var i=0;i<data.length;i++) {
-        //$('body').append('<p>' + JSON.stringify(data[i]) + '</p>');
-        console.log(data[i]);
-        $.ajax({
-            url:"http://127.0.0.1:5000/report", 
-            type: "POST",
-            data: JSON.stringify(data[i]),
-            contentType: "application/json; charset=utf-8",
-            dataType: 'json',
-            success: function(d) {console.log(d)},
-            failure: function(err) {console.log(err)} 
-        });
-    }
+    //getChromeStorage('api_key').done(function(apiKey){console.log(apiKey)});
+    
+    getIssues(response.bad_alt_images).done(function(issues) {
+        //console.log(JSON.stringify(issues));
+        reportIssues(issues);
+    });
   });
 });
 

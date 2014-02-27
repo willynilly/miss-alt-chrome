@@ -8,22 +8,29 @@
     <div class="page">
       <h1>Miss-Alt-Chrome Extension Options</h1>
 
-      <h2>Your Disabilities and Impairments</h2>
-      <input type="checkbox" name="disabilities[]" value="Vision Loss and Blindness" />Vision Loss and Blindness<br />
-      <input type="checkbox" name="disabilities[]" value="Autism" />Autism<br />
-      <input type="checkbox" name="disabilities[]" value="Chronic Illness" />Chronic Illness<br />
-      <input type="checkbox" name="disabilities[]" value="Hearing Loss and Deafness" />Hearing Loss and Deafness<br />
-      <input type="checkbox" name="disabilities[]" value="Intellectual Disability" />Intellectual Disability<br />
-      <input type="checkbox" name="disabilities[]" value="Learning Disability" />Learning Disability<br />
-      <input type="checkbox" name="disabilities[]" value="Memory Loss" />Memory Loss<br />
-      <input type="checkbox" name="disabilities[]" value="Mental Illness" />Mental Illness<br />
-      <input type="checkbox" name="disabilities[]" value="Physical Disability" />Physical Disability<br />
-      <input type="checkbox" name="disabilities[]" value="Speech and Language Disorders" />Speech and Language Disorders<br />
+      <h2>API Key</h2>
+      <label for="api-key">Enter your API key from the Miss-Alt website:</label><br/><input type="text" name="api-key" class="api-key"/><br/>
 
+
+      <h2>Disabilities and Impairments</h2>
+      <fieldset>
+        <legend>Enter your disabilities and impairments:</legend>  
+        <input type="checkbox" name="disabilities[]" value="Vision Loss and Blindness" />Vision Loss and Blindness<br />
+        <input type="checkbox" name="disabilities[]" value="Autism" />Autism<br />
+        <input type="checkbox" name="disabilities[]" value="Chronic Illness" />Chronic Illness<br />
+        <input type="checkbox" name="disabilities[]" value="Hearing Loss and Deafness" />Hearing Loss and Deafness<br />
+        <input type="checkbox" name="disabilities[]" value="Intellectual Disability" />Intellectual Disability<br />
+        <input type="checkbox" name="disabilities[]" value="Learning Disability" />Learning Disability<br />
+        <input type="checkbox" name="disabilities[]" value="Memory Loss" />Memory Loss<br />
+        <input type="checkbox" name="disabilities[]" value="Mental Illness" />Mental Illness<br />
+        <input type="checkbox" name="disabilities[]" value="Physical Disability" />Physical Disability<br />
+        <input type="checkbox" name="disabilities[]" value="Speech and Language Disorders" />Speech and Language Disorders<br />
+      </fieldset>
       <br>
       
-      <h2>Your Organizations</h2>
-      <textarea name="organizations" rows="6" cols="50" placeholder="Enter your colleges, corporations, government agencies, etc. (one organization per line)"></textarea>
+      <h2>Organizations</h2>
+      <label for="organizations">Enter your organizations, including colleges, corporations, government agencies, etc. (one organization per line):</label>
+      <textarea name="organizations" rows="6" cols="50" placeholder=""></textarea>
       
       <div id="status"></div>
       <button id="save">Save</button>
